@@ -1,9 +1,12 @@
 FROM node:18
 
 WORKDIR /app
-RUN git clone https://github.com/genieacs/genieacs.git . && \
-    yarn && yarn build
 
-EXPOSE 3000
+COPY . .
 
-CMD ["yarn", "start", "--ui"]
+RUN npm install -g genieacs
+
+EXPOSE 7547
+
+CMD ["genieacs-cwmp"]
+
